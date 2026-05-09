@@ -1,3 +1,5 @@
+import type { LessonCategory } from "@/types/lesson";
+
 export type TextCategorySlug =
   | "umwelt"
   | "bildung"
@@ -8,7 +10,7 @@ export type TextCategorySlug =
 
 export interface TextCategory {
   slug: TextCategorySlug;
-  title: string;
+  title: LessonCategory;
   descriptionUz: string;
   icon: string;
 }

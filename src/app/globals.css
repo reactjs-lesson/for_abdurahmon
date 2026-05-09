@@ -24,3 +24,117 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes driftX {
+  0%,
+  100% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(12px);
+  }
+}
+
+.animate-float-slow {
+  animation: floatY 8s ease-in-out infinite;
+}
+
+.animate-float-medium {
+  animation: floatY 6s ease-in-out infinite;
+}
+
+.animate-drift {
+  animation: driftX 9s ease-in-out infinite;
+}
+
+@keyframes gradientWave {
+  0% {
+    transform: translate3d(-8%, -6%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(8%, 6%, 0) scale(1.08);
+  }
+  100% {
+    transform: translate3d(-8%, -6%, 0) scale(1);
+  }
+}
+
+@keyframes gradientPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position:
+      0% 50%,
+      100% 40%,
+      50% 100%,
+      0% 50%;
+  }
+  50% {
+    background-position:
+      100% 60%,
+      0% 50%,
+      60% 0%,
+      100% 50%;
+  }
+  100% {
+    background-position:
+      0% 50%,
+      100% 40%,
+      50% 100%,
+      0% 50%;
+  }
+}
+
+.animated-gradient-bg {
+  background: radial-gradient(circle at 18% 22%, rgb(59 130 246 / 30%), transparent 45%),
+    radial-gradient(circle at 78% 20%, rgb(124 58 237 / 24%), transparent 48%),
+    radial-gradient(circle at 50% 82%, rgb(8 145 178 / 22%), transparent 52%),
+    linear-gradient(130deg, #dbe7ff 0%, #dde2ff 45%, #d4e7ff 100%);
+  background-size: 180% 180%, 160% 160%, 200% 200%, 220% 220%;
+  animation: gradientFlow 24s ease-in-out infinite;
+  opacity: 0.72;
+}
+
+.animated-gradient-bg::before,
+.animated-gradient-bg::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+}
+
+.animated-gradient-bg::before {
+  width: 42vw;
+  height: 42vw;
+  top: -12vw;
+  left: -10vw;
+  background: rgb(125 211 252 / 35%);
+  animation: gradientWave 14s ease-in-out infinite, gradientPulse 9s ease-in-out infinite;
+}
+
+.animated-gradient-bg::after {
+  width: 44vw;
+  height: 44vw;
+  right: -10vw;
+  bottom: -12vw;
+  background: rgb(196 181 253 / 35%);
+  animation: gradientWave 16s ease-in-out infinite reverse, gradientPulse 11s ease-in-out infinite;
+}
